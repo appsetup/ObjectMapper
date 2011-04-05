@@ -29,6 +29,7 @@
             <scope>compile</scope>
             <includes>
                 <include>*:jar</include>
+
             </includes>
         </dependencySet>
     </dependencySets>
