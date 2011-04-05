@@ -41,20 +41,20 @@ public class ObjectMapper
         Class clazz = objectMapperClass.getClazz();
         List<Column> columns = clazz.getColumn();
         List<CollectionColumns> collectionColumns =  clazz.getCollectionColumns();
-        List employees = new ArrayList();
-        Object employee = null;
+        List objectList = new ArrayList();
+        Object objectToBeMapped = null;
         for (Map<String, Object> stringObjectMap : dataList) {
             Object creationConditionValue = getPropertyValues(clazz.getObjectCreateCondition(),stringObjectMap);
-            if(employee == null || (creationConditionValue != null && !creationConditionValue.
-                    equals(getPropertyValues(clazz.getObjectCreateConditionJavaProperty(), employee))))
+            if(objectToBeMapped == null || (creationConditionValue != null && !creationConditionValue.
+                    equals(getPropertyValues(clazz.getObjectCreateConditionJavaProperty(), objectToBeMapped))))
             {
-                employee = java.lang.Class.forName(clazz.getClassName()).newInstance();
-                employees.add(employee);
-                mapFields(columns, stringObjectMap, employee);
+                objectToBeMapped = java.lang.Class.forName(clazz.getClassName()).newInstance();
+                objectList.add(objectToBeMapped);
+                mapFields(columns, stringObjectMap, objectToBeMapped);
             }
-            mapCollections(collectionColumns, stringObjectMap,employee);
+            mapCollections(collectionColumns, stringObjectMap,objectToBeMapped);
         }
-        return employees;
+        return objectList;
     }
 
     private Object getPropertyValues(String property, Object stringObjectMap) throws
