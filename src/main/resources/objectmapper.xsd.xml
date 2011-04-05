@@ -1,0 +1,38 @@
+<urn:ClassesElements xmlns:urn="urn:britishgas.co.uk:Bertha">
+  <Class>
+        <ClassName>com.naveen.test.dvo.Employee</ClassName>
+      <Column>
+          <Name>EMPLOYEE_ID</Name>
+          <JavaProperty>employeeId</JavaProperty>
+      </Column>
+      <Column>
+          <Name>FIRST_NAME</Name>
+          <JavaProperty>firstName</JavaProperty>
+      </Column>
+      <Column>
+          <Name>LAST_NAME</Name>
+          <JavaProperty>lastName</JavaProperty>
+      </Column>
+      <Column>
+          <Name>DEPARTMENT_ID</Name>
+          <JavaProperty>department.departmentId</JavaProperty>
+      </Column>
+      <Column>
+          <Name>DEPARTMENT_NAME</Name>
+          <JavaProperty>department.departmentName</JavaProperty>
+      </Column>
+    <!--Zero or more repetitions:-->
+    <CollectionColumns>
+      <ClassName>com.naveen.test.dvo.Employee</ClassName>
+      <!--1 or more repetitions:-->
+      <CollectionColumn>
+          <Name>SUB_EMPLOYEE_ID</Name>
+          <JavaProperty>employeeId</JavaProperty>
+      </CollectionColumn>
+      <ObjectCreateCondition>SUB_EMPLOYEE_ID</ObjectCreateCondition>
+      <!--Zero or more repetitions:-->
+      <CollectionColumns/>
+    </CollectionColumns>
+    <ObjectCreateCondition>EMPLOYEE_ID</ObjectCreateCondition>
+  </Class>
+</urn:ClassesElements>
